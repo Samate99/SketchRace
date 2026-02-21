@@ -7,6 +7,8 @@ import {
 import { matchMaker } from "@colyseus/core";
 
 import { SketchRaceRoom } from "./rooms/MyRoom.js";
+import path from "path";
+import express from "express";
 
 const server = defineServer({
     rooms: {
@@ -14,6 +16,10 @@ const server = defineServer({
     },
 
     express: (app) => {
+        // Serve static files from the client
+        const clientPath = path.resolve("..", "my-client", "dist");
+        app.use(express.static(clientPath));
+
         // Find room by code
         app.get("/api/find-room/:code", async (req, res) => {
             try {
@@ -33,10 +39,14 @@ const server = defineServer({
         // Colyseus Monitor
         app.use("/monitor", monitor());
 
-        // Colyseus Playground (dev only)
         if (process.env.NODE_ENV !== "production") {
             app.use("/", playground());
         }
+
+        // Fallback to index.html for React routing
+        app.get("*", (req, res) => {
+            res.sendFile(path.resolve("..", "my-client", "dist", "index.html"));
+        });
     },
 });
 

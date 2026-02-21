@@ -1,0 +1,11 @@
+{
+    "name": "sketch-race-monorepo",
+    "private": true,
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "scripts": {
+        "build": "cd my-client && npm install && npm run build && cd ../my-server && npm install && npm run build",
+        "start": "cd my-server && npm run serve"
+    }
+}
