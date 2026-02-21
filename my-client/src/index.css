@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #fdfaf3;
+  --ink: #2c3e50;
+  --team-blue: #3b82f6;
+  --team-green: #22c55e;
+  --sketch-shadow: rgba(0, 0, 0, 0.1);
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  background-color: var(--paper);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-sketch {
+  font-family: 'Gochi Hand', cursive;
+}
+
+.font-hand {
+  font-family: 'Caveat', cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  /* Paper texture pattern */
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(90deg, rgba(0, 0, 0, .03) 1px, transparent 0),
+    linear-gradient(rgba(0, 0, 0, .03) 1px, transparent 0);
+  background-size: 20px 20px;
+  position: relative;
+}
+
+/* Subtle noise overlay for paper feel */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3 BACK%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Sketchy Borders */
+.sketch-border {
+  border: 2px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 2px 4px 0 var(--sketch-shadow);
+}
+
+.sketch-border-sm {
+  border: 1.5px solid var(--ink);
+  border-radius: 120px 10px 100px 10px / 10px 100px 10px 120px;
+}
+
+.sketch-card {
+  background: white;
+  padding: 1.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 4px 12px 6px 14px / 14px 6px 12px 4px;
+  box-shadow: 4px 6px 0 var(--sketch-shadow);
+  transform: rotate(-0.5deg);
+}
+
+.sketch-button {
+  @apply font-sketch text-lg px-6 py-2 transition-all active:scale-95;
+  border: 2px solid var(--ink);
+  border-radius: 15px 4px 15px 4px / 4px 15px 4px 15px;
+  background: white;
+  cursor: pointer;
+}
+
+.sketch-button:hover {
+  transform: scale(1.02) rotate(1deg);
+  box-shadow: 3px 3px 0 var(--sketch-shadow);
+}
+
+.sketch-button-blue {
+  @apply bg-blue-50 text-team-blue border-team-blue hover:bg-blue-100;
+}
+
+.sketch-button-green {
+  @apply bg-green-50 text-team-green border-team-green hover:bg-green-100;
+}
+
+.sketch-button-red {
+  @apply bg-red-50 text-red-500 border-red-500 hover:bg-red-100;
+}
+
+.sketch-input {
+  @apply w-full bg-transparent border-b-2 border-slate-300 px-2 py-1 focus:border-team-blue outline-none transition-colors font-hand text-xl;
+  border-radius: 0;
+}
+
+/* Animations */
+@keyframes scribble {
+  0% {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+
+  50% {
+    border-radius: 240px 20px 210px 20px / 20px 210px 20px 240px;
+  }
+
+  100% {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+}
+
+.animate-scribble:hover {
+  animation: scribble 0.5s ease-in-out infinite;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scrollbar sketchy */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border-radius: 10px;
+  border: 2px solid var(--paper);
+}
