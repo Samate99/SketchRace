@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { client } from "../lib/colyseus";
+import { client, HTTP_URL } from "../lib/colyseus";
 import type { Room } from "@colyseus/sdk";
 import { Pencil, Users, Plus, LogIn, Globe, Settings } from "lucide-react";
 import { t, type Lang } from "../lib/i18n";
@@ -57,9 +57,7 @@ export default function LobbyPage({ onJoinRoom }: LobbyPageProps) {
         setLoading(true);
         setError("");
         try {
-            const SERVER_URL = import.meta.env.VITE_SERVER_URL || "ws://localhost:2567";
-            const httpUrl = SERVER_URL.replace(/^ws/, "http");
-            const res = await fetch(`${httpUrl}/api/find-room/${roomCode.trim().toUpperCase()}`);
+            const res = await fetch(`${HTTP_URL}/api/find-room/${roomCode.trim().toUpperCase()}`);
             if (!res.ok) {
                 setError(t("lobby.errNoRoom", lang));
                 setLoading(false);
