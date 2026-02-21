@@ -107,7 +107,7 @@ export default function DrawingCanvas({
             {/* Canvas */}
             <div
                 ref={containerRef}
-                className="flex-1 min-h-0 bg-white relative cursor-crosshair group"
+                className="flex-1 min-h-[400px] bg-white relative cursor-crosshair group flex items-center justify-center p-4"
             >
                 <Stage
                     ref={stageRef}

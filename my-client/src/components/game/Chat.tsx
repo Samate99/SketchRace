@@ -44,7 +44,7 @@ export default function Chat({ messages, onSendMessage, canType, lang }: ChatPro
             {/* Messages */}
             <div
                 ref={chatContainerRef}
-                className="flex-1 overflow-y-auto py-4 space-y-2 scroll-smooth"
+                className="flex-1 overflow-y-auto py-4 space-y-2 scroll-smooth custom-scrollbar"
                 style={{ overscrollBehavior: "contain" }}
             >
                 {messages.map((msg: any, i: number) => (

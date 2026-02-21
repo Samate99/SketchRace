@@ -131,10 +131,29 @@ body::before {
 }
 
 #root {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Scrollbar sketchy */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  opacity: 0.3;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--team-blue);
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

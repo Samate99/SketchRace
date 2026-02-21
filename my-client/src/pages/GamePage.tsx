@@ -259,7 +259,7 @@ export default function GamePage({ room, onLeave }: GamePageProps) {
     const phaseBanner = getPhaseBanner();
 
     return (
-        <div className="min-h-screen flex flex-col overflow-hidden text-slate-800">
+        <div className="h-screen flex flex-col overflow-hidden text-slate-800">
             {/* Toast notifications */}
             <ToastContainer toasts={toasts} onDismiss={dismissToast} />
 

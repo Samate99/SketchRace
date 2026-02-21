@@ -65,7 +65,7 @@ export default function Scoreboard({ players, teamScores, mySessionId, lang }: S
     );
 
     return (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 h-full overflow-y-auto pr-1 custom-scrollbar">
             <div className="flex items-center gap-2 px-1 border-b-2 border-slate-100 pb-2">
                 <Users className="w-5 h-5 text-slate-500" />
                 <span className="font-sketch text-2xl text-slate-800">{t("scoreboard.title", lang)}</span>
